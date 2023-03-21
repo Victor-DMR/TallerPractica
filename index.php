@@ -22,22 +22,22 @@
     <div class="row conten_row mt-3 mb-3">
         <div class="col-sm-10 col-md-4 border">
             <h4 class="text-center">Registro de paciente</h4>
-            <form id="form" method="post">
+            <form id="form" action="registrouser.php" method="post">
                 <div class="mb-2">
                     <label for="" class="form-label">Documento</label>
-                    <input type="number" id="documento_user" class="form-control">
+                    <input type="number" name="documento_user" class="form-control">
                 </div>
                 <div class="mb-2">
                     <label for="" class="form-label">Nombre</label>
-                    <input type="text" id="nombre_user" class="form-control">
+                    <input type="text" name="nombre_user" class="form-control">
                 </div>
                 <div class="mb-2">
                     <label for="" class="form-label">Apellido</label>
-                    <input type="text" id="apellido_user" class="form-control">
+                    <input type="text" name="apellido_user" class="form-control">
                 </div>
                 <div class="mb-2">
                     <label for="" class="form-label">Activo</label>
-                    <select id="activo_user" class="form-select" aria-label="Default select example">
+                    <select name="activo_user" class="form-select" aria-label="Default select example">
                         <option selected>Seleccione</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="mb-2">
                     <label for="" class="form-label">Regimen</label>
-                    <select id="regimen_user" class="form-select" aria-label="Default select example">
+                    <select name="regimen_user" class="form-select" aria-label="Default select example">
                         <option selected>Seleccione</option>
                         <option value="contributivo">Contributivo</option>
                         <option value="subsidiado">Subsidiado</option>
@@ -91,25 +91,25 @@
                 <hr>
                 <div class="mb-2">
                     <label for="" class="form-label">Fecha</label>
-                    <input type="date" class="form-control">
+                    <input type="date" name="fecha" class="form-control">
                 </div>
                 <div class="mb-2">
                     <label for="" class="form-label">Hora</label>
-                    <input type="time" class="form-control">
+                    <input type="time" name="hora" class="form-control">
                 </div>
                 <div class="mb-2">
                     <label for="" class="form-label">Valor</label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="valor" class="form-control">
                 </div>
                 <div class="mb-2">
                     <label for="" class="form-label">Atendida</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" name="atendida" aria-label="Default select example">
                         <option selected>Seleccione</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
                     </select>
                 </div>
-                <button type="button" id="registrar" class="btn btn-primary mb-2 mt-2">Registrar</button>
+                <button type="submit" id="registrar" class="btn btn-primary mb-2 mt-2">Registrar</button>
             </form>
         </div>
     </div>
@@ -150,15 +150,16 @@
                     return false;
                 }
 
-                $.ajax({
-                    url: 'datos.php',
+               /*  $.ajax({
+                    url: 'registrouser.php',
                     type: 'post',
                     data: $('#form').serialize(),
                     success: function(data) {
-                        alertify.alert("Registro Exitoso", "Su registro fue todo un exito");
-                        header("lista.php");
+                        $("#dato").val(data);
+                         alertify.alert("Registro Exitoso", "Su registro fue todo un exito");
+                        header("/lista.php");
                     }
-                });
+                }); */
             });
         });
     </script>

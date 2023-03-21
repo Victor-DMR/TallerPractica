@@ -20,15 +20,4 @@ if (isset($_POST['medico'])) {
     }
 }
 
-if (isset($_POST['documento_user']) && isset($_POST['nombre_user']) && isset($_POST['apellido_user']) && isset($_POST['activo_user']) && isset($_POST['regimen_user'])) {
-    $documento_user = $_POST['documento_user'];
-    $nombre_user = $_POST['nombre_user'];
-    $apellido_user = $_POST['apellido_user'];
-    $activo_user = $_POST['activo_user'];
-    $regimen_user = $_POST['regimen_user'];
-
-    $sqlregistro = "INSERT INTO `paciente` (`documento`, `nombre`, `apellido`, `activo`, `regimen`) VALUES ('$documento_user', '$nombre_user', '$apellido_user', '$activo_user', '$regimen_user')";
-    echo $queryregistro = mysqli_query($conet, $sql);
-}
-
 ?>
