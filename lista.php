@@ -13,36 +13,44 @@
 
 <body>
     <div class="row conten_row mt-3 mb-3">
-        <div class="col-sm-12 col-md-11 border">
-            <h3>Lista de usuarios</h3>
-            <table class="table">
+        <div class="col-sm-12 col-md-11">
+            <h3>Lista de paciente</h3> 
+            <a href="index.php"><button class="btn btn-success">Nuevo</button></a>
+            <a href="index.php"><button class="btn btn-primary">Regresar</button></a>
+            <table class="table mt-3">
                 <thead>
                     <tr>
                         <th scope="col">Documento</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Activo</th>
+                        <th scope="col">Regimen</th>
+                        <th scope="col">Cita</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
+                <?php
+                include "conexion.php";
+
+                $sql = "SELECT * FROM paciente WHERE id_paciente";
+                $query = mysqli_query($conet, $sql);
+
+                while ($datos = mysqli_fetch_array($query)) {
+                ?>
+                    <tbody>
+                        <tr>
+                            <th><?= $datos["documento"] ?></th>
+                            <td><?= $datos["nombre"] ?></td>
+                            <td><?= $datos["apellido"] ?></td>
+                            <td><?= $datos["activo"] ?></td>
+                            <td><?= $datos["regimen"] ?></td>
+                            <td><a href="lista_cita.php?id='<?= $datos['id_paciente'] ?>'"><button class="btn btn-primary">ver</button></a></td>
+                            <td><a href="delate.php?id='<?= $datos['id_paciente']?>'"><button class="btn btn-danger">delate</button></a> <a href="indexupdate.php?id='<?= $datos['id_paciente']?>'"><button class="btn btn-success">update</button></a></td>
+                        </tr>
+                    </tbody>
+                <?php
+                }
+                ?>
             </table>
         </div>
     </div>
